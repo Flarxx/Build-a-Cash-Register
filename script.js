@@ -14,12 +14,18 @@ let cid = [
 
 const PurchaseBtn = document.getElementById('purchase-btn');
 const inputCash = document.getElementById('cash');
-
+const result = document.getElementById('change-due');
 
 PurchaseBtn.addEventListener('click', () => {
   const cashValue = Number(inputCash.value);
-  if (cashValue <= price) {
+    if (Math.abs(cashValue - price) < 0.01) {
+    result.innerHTML = 'No change due - customer paid with exact cash';
+    return;
+  }
+  if (cashValue < price) {
     alert('Customer does not have enough money to purchase the item');
     return;
   }
+
+  
 });
